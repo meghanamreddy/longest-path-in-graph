@@ -27,6 +27,9 @@ def topolgical_sort(original_graph):
     return sorted_graph
 
 def get_predecessor_graph(original_graph):
+    '''
+    Computes the predecessor graph of a given graph, and returns it.
+    '''
     to_graph = {}
     for node, adjacent_edges in original_graph.items():
         to_graph[node] =  []
@@ -38,6 +41,11 @@ def get_predecessor_graph(original_graph):
     return to_graph
 
 def get_longest(to_node):
+    '''
+    The function takes the target node as input.
+    Computes the length of the longest path to the target node.
+    Returns the length.
+    '''
     if to_node in longest_paths_dict:
         return longest_paths_dict[to_node]
 
@@ -49,6 +57,10 @@ def get_longest(to_node):
     return max_length
 
 def longest_path(original_graph):
+    '''
+    Finds the longest path in the graph. Which can
+    end at any vertex.
+    '''
     all_nodes = topolgical_sort(original_graph)
     arr = []
     for to_node in all_nodes:
@@ -58,6 +70,9 @@ def longest_path(original_graph):
     print "Max length in given graph is: %d" % max(arr)
     
 def generate_graph(to_node):
+    '''
+    Generate the predecessor graph for a target node.
+    '''
     word = to_node
     word_list = []
     while predecessor_graph[word] != []:
